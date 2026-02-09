@@ -7,7 +7,9 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "start": "bun run src/index.ts"
+
   },
   "dependencies": {
     "@elysiajs/cookie": "latest",
