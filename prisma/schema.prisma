@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String       @id @default(cuid())
+  name      String
+  email     String       @unique
+  password  String
+  role      String       @default("user")
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  toolUsages ToolUsage[]
+
+  @@map("users")
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model ToolUsage {
+  id        String   @id @default(cuid())
+  userId    String
+  toolName  String
+  toolType  String   // 'image' or 'pdf'
+  toolEndpoint String // e.g., '/api/image/compress'
+  createdAt DateTime @default(now())
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([toolName])
+  @@index([createdAt])
+  @@map("tool_usages")
+}
+

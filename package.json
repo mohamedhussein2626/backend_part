@@ -3,13 +3,34 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/cookie": "latest",
+    "@elysiajs/jwt": "latest",
+    "@elysiajs/static": "latest",
+    "@prisma/client": "^6.0.0",
+    "bcryptjs": "latest",
+    "canvas": "^3.2.1",
+    "docx": "latest",
+    "elysia": "latest",
+    "jimp": "latest",
+    "mammoth": "latest",
+    "pdf-lib": "latest",
+    "pdf-parse": "^2.4.5",
+    "pdf-to-img": "^5.0.0",
+    "pdfjs-dist": "^5.4.624",
+    "sharp": "latest",
+    "tesseract.js": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@types/bcryptjs": "latest",
+    "bun-types": "latest",
+    "prisma": "^6.0.0"
   },
   "module": "src/index.js"
 }
