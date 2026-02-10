@@ -4,6 +4,7 @@ import { adminAuth } from "./routes/admin.auth";
 import { imageTools } from "./routes/image.tools";
 import { pdfTools } from "./routes/pdf.tools";
 import { usageStats, adminUsageStats } from "./routes/usage.stats";
+import { adminUsers } from "./routes/admin.users";
 
 const app = new Elysia()
   // Handle OPTIONS preflight requests
@@ -58,6 +59,7 @@ const app = new Elysia()
   .group("/api/pdf", (app) => app.use(pdfTools))
   .group("/api/usage", (app) => app.use(usageStats))
   .group("/api/usage", (app) => app.use(adminUsageStats))
+  .group("/api/admin/users", (app) => app.use(adminUsers))
   .listen(3000);
 
 console.log(
